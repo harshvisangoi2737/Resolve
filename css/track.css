@@ -1,0 +1,43 @@
+/* =========================================================
+   TRACK.CSS — Track Complaint page (#page-track)
+   Search bar, timeline, complaint detail card (layout extras
+   beyond the shared .complaint-detail-card/.detail-row in base.css).
+   ========================================================= */
+
+#page-track { padding-top: 80px; }
+.track-wrapper { max-width: 900px; margin: 0 auto; padding: 3rem 2rem; }
+.search-bar {
+  display: flex; gap: 1rem; margin-bottom: 3rem;
+}
+.search-bar .form-input { flex: 1; }
+
+/* TIMELINE */
+.timeline {
+  position: relative; padding-left: 2rem;
+}
+.timeline::before {
+  content: ''; position: absolute; left: 11px; top: 0; bottom: 0;
+  width: 2px; background: linear-gradient(to bottom, var(--primary), transparent);
+}
+.timeline-event {
+  position: relative; margin-bottom: 2rem; padding-left: 2rem;
+}
+.timeline-event::before {
+  content: ''; position: absolute; left: -27px; top: 5px;
+  width: 12px; height: 12px; border-radius: 50%;
+  border: 2px solid var(--primary);
+  background: var(--dark);
+}
+.timeline-event.done::before { background: var(--primary); }
+.timeline-event.current::before {
+  background: var(--primary);
+  box-shadow: 0 0 0 4px rgba(108,99,255,0.3);
+  animation: pulseDot 2s infinite;
+}
+@keyframes pulseDot {
+  0%,100% { box-shadow: 0 0 0 4px rgba(108,99,255,0.3); }
+  50% { box-shadow: 0 0 0 8px rgba(108,99,255,0.1); }
+}
+.event-time { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 4px; }
+.event-title { font-weight: 600; color: #fff; margin-bottom: 4px; }
+.event-desc { font-size: 0.875rem; color: var(--text-muted); }

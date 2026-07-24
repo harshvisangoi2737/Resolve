@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Analytics — Resolv</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/analytics.css">
+</head>
+<body>
+
+<canvas id="bg-canvas"></canvas>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-logo">Re<span>solv</span></div>
+  <ul class="nav-links">
+    <li><a onclick="goTo('index')">Home</a></li>
+    <li><a onclick="goTo('dashboard')">Dashboard</a></li>
+    <li><a onclick="goTo('complaint')">File Complaint</a></li>
+    <li><a onclick="goTo('track')">Track</a></li>
+    <li><a onclick="goTo('analytics')">Analytics</a></li>
+    <li><a onclick="goTo('admin')">Admin</a></li>
+  </ul>
+  <button class="nav-cta" onclick="goTo('complaint')">File a Complaint</button>
+</nav>
+
+<!-- ===================== ANALYTICS PAGE ===================== -->
+<div id="page-analytics" class="page active">
+  <div class="analytics-wrapper">
+    <div class="dash-header">
+      <div>
+        <div class="dash-title">Analytics</div>
+        <div class="dash-sub">Trends, patterns, and insights across all complaints</div>
+      </div>
+      <div style="display:flex;gap:0.8rem;">
+        <select class="form-select" style="width:auto;padding:0.5rem 1rem;font-size:0.85rem;">
+          <option>Last 30 days</option>
+          <option>Last 7 days</option>
+          <option>This month</option>
+          <option>All time</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="metrics-grid" style="margin-bottom:0;">
+      <div class="metric-card mc-purple">
+        <div class="metric-label">Resolution Rate</div>
+        <div class="metric-value">91%</div>
+        <div class="metric-trend trend-up">↑ 3% vs last month</div>
+      </div>
+      <div class="metric-card mc-green">
+        <div class="metric-label">Avg. First Response</div>
+        <div class="metric-value">18m</div>
+        <div class="metric-trend trend-up">↓ 5m faster</div>
+      </div>
+      <div class="metric-card mc-yellow">
+        <div class="metric-label">Repeat Issues</div>
+        <div class="metric-value">14%</div>
+        <div class="metric-trend trend-down">↓ 2% from last month</div>
+      </div>
+      <div class="metric-card mc-red">
+        <div class="metric-label">Escalation Rate</div>
+        <div class="metric-value">7.3%</div>
+        <div class="metric-trend trend-up">↑ 1.2% concern</div>
+      </div>
+    </div>
+
+    <div class="analytics-grid">
+      <div class="analytics-card">
+        <div class="analytics-card-title">Top Recurring Issues</div>
+        <div class="top-issues">
+          <div class="issue-row"><div class="issue-rank">1</div><div class="issue-name">WiFi connectivity drops</div><div class="issue-count" style="color:var(--danger)">45×</div></div>
+          <div class="issue-row"><div class="issue-rank">2</div><div class="issue-name">Hot water not available</div><div class="issue-count" style="color:var(--warning)">38×</div></div>
+          <div class="issue-row"><div class="issue-rank">3</div><div class="issue-name">Overhead fan failure</div><div class="issue-count" style="color:var(--warning)">31×</div></div>
+          <div class="issue-row"><div class="issue-rank">4</div><div class="issue-name">Corridor lights out</div><div class="issue-count" style="color:var(--info)">24×</div></div>
+          <div class="issue-row"><div class="issue-rank">5</div><div class="issue-name">Mess cleanliness</div><div class="issue-count" style="color:var(--info)">19×</div></div>
+          <div class="issue-row"><div class="issue-rank">6</div><div class="issue-name">Water supply (morning)</div><div class="issue-count" style="color:var(--success)">15×</div></div>
+        </div>
+      </div>
+
+      <div class="analytics-card">
+        <div class="analytics-card-title">Complaints by Block</div>
+        <div style="margin-top:0.5rem;">
+          <div class="bar-group" style="margin-bottom:1.2rem;">
+            <div class="bar-label"><span>Block A</span><span style="color:#fff">82</span></div>
+            <div class="bar-track"><div class="bar-fill" style="width:82%; background:var(--primary);"></div></div>
+          </div>
+          <div class="bar-group" style="margin-bottom:1.2rem;">
+            <div class="bar-label"><span>Block B</span><span style="color:#fff">67</span></div>
+            <div class="bar-track"><div class="bar-fill" style="width:67%; background:var(--info);"></div></div>
+          </div>
+          <div class="bar-group" style="margin-bottom:1.2rem;">
+            <div class="bar-label"><span>Block C</span><span style="color:#fff">53</span></div>
+            <div class="bar-track"><div class="bar-fill" style="width:53%; background:var(--success);"></div></div>
+          </div>
+          <div class="bar-group" style="margin-bottom:1.2rem;">
+            <div class="bar-label"><span>Block D</span><span style="color:#fff">45</span></div>
+            <div class="bar-track"><div class="bar-fill" style="width:45%; background:var(--warning);"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="analytics-card">
+        <div class="analytics-card-title">Complaint Heat Map (by hour & day)</div>
+        <div style="margin-bottom:0.5rem;font-size:0.75rem;color:var(--text-muted);display:flex;gap:4px;">
+          <span style="flex:1;text-align:center;">Mon</span><span style="flex:1;text-align:center;">Tue</span><span style="flex:1;text-align:center;">Wed</span><span style="flex:1;text-align:center;">Thu</span><span style="flex:1;text-align:center;">Fri</span><span style="flex:1;text-align:center;">Sat</span><span style="flex:1;text-align:center;">Sun</span>
+        </div>
+        <div class="heat-grid" id="heat-grid"></div>
+        <div style="display:flex;align-items:center;gap:0.5rem;margin-top:0.8rem;font-size:0.75rem;color:var(--text-muted);">
+          <span>Less</span>
+          <div style="width:14px;height:14px;border-radius:3px;" class="heat-0"></div>
+          <div style="width:14px;height:14px;border-radius:3px;" class="heat-1"></div>
+          <div style="width:14px;height:14px;border-radius:3px;" class="heat-2"></div>
+          <div style="width:14px;height:14px;border-radius:3px;" class="heat-3"></div>
+          <div style="width:14px;height:14px;border-radius:3px;" class="heat-4"></div>
+          <span>More</span>
+        </div>
+      </div>
+
+      <div class="analytics-card">
+        <div class="analytics-card-title">Resolution Time Distribution</div>
+        <div style="display:flex;gap:1rem;margin-bottom:1rem;flex-wrap:wrap;">
+          <div style="text-align:center;flex:1;">
+            <div style="font-family:'Space Grotesk',sans-serif;font-size:1.8rem;font-weight:700;color:var(--success)">43%</div>
+            <div style="font-size:0.75rem;color:var(--text-muted)">Under 2h</div>
+          </div>
+          <div style="text-align:center;flex:1;">
+            <div style="font-family:'Space Grotesk',sans-serif;font-size:1.8rem;font-weight:700;color:var(--info)">31%</div>
+            <div style="font-size:0.75rem;color:var(--text-muted)">2–8 hours</div>
+          </div>
+          <div style="text-align:center;flex:1;">
+            <div style="font-family:'Space Grotesk',sans-serif;font-size:1.8rem;font-weight:700;color:var(--warning)">17%</div>
+            <div style="font-size:0.75rem;color:var(--text-muted)">8–24 hours</div>
+          </div>
+          <div style="text-align:center;flex:1;">
+            <div style="font-family:'Space Grotesk',sans-serif;font-size:1.8rem;font-weight:700;color:var(--danger)">9%</div>
+            <div style="font-size:0.75rem;color:var(--text-muted)">Over 24h</div>
+          </div>
+        </div>
+        <div style="height: 20px; border-radius: 99px; overflow: hidden; display: flex;">
+          <div style="width:43%;background:var(--success);"></div>
+          <div style="width:31%;background:var(--info);"></div>
+          <div style="width:17%;background:var(--warning);"></div>
+          <div style="width:9%;background:var(--danger);"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div id="toast">
+  <span id="toast-icon">✅</span>
+  <span id="toast-msg">Done!</span>
+</div>
+
+<script src="js/shared.js"></script>
+<script src="js/analytics.js"></script>
+</body>
+</html>

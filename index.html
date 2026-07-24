@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resolv — Hostel Complaint Management</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/home.css">
+</head>
+<body>
+
+<canvas id="bg-canvas"></canvas>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-logo">Re<span>solv</span></div>
+  <ul class="nav-links">
+    <li><a onclick="goTo('index')">Home</a></li>
+    <li><a onclick="goTo('dashboard')">Dashboard</a></li>
+    <li><a onclick="goTo('complaint')">File Complaint</a></li>
+    <li><a onclick="goTo('track')">Track</a></li>
+    <li><a onclick="goTo('analytics')">Analytics</a></li>
+    <li><a onclick="goTo('admin')">Admin</a></li>
+  </ul>
+  <button class="nav-cta" onclick="goTo('complaint')">File a Complaint</button>
+</nav>
+
+<!-- ===================== HOME PAGE ===================== -->
+<div id="page-home" class="page active">
+
+  <div class="hero">
+    <div class="hero-cards">
+      <div class="floating-card fc-1">
+        <div class="fc-title">💧 Water Leak</div>
+        <div class="fc-meta">Room 204 · 2 hrs ago</div>
+        <div class="fc-status s-resolved">✓ Resolved</div>
+      </div>
+      <div class="floating-card fc-2">
+        <div class="fc-title">⚡ Power Outage</div>
+        <div class="fc-meta">Floor 3 · 45 min ago</div>
+        <div class="fc-status s-pending">◉ In Progress</div>
+      </div>
+      <div class="floating-card fc-3">
+        <div class="fc-title">🌐 No Internet</div>
+        <div class="fc-meta">Block B · 1 hr ago</div>
+        <div class="fc-status s-urgent">⚠ Urgent</div>
+      </div>
+      <div class="floating-card fc-4">
+        <div class="fc-title">🧹 Cleanliness</div>
+        <div class="fc-meta">Common Area · 3 hrs ago</div>
+        <div class="fc-status s-resolved">✓ Resolved</div>
+      </div>
+    </div>
+
+    <div style="position: relative; z-index: 2;">
+      <div class="hero-badge"><div class="badge-dot"></div> Smart Hostel Management</div>
+      <h1 class="hero-title">Complaints Heard.<br><span class="line2">Issues Resolved.</span></h1>
+      <p class="hero-subtitle">A centralized platform for students to report hostel issues, track resolutions in real time, and ensure every complaint gets the attention it deserves.</p>
+      <div class="hero-btns">
+        <button class="btn-primary" onclick="goTo('complaint')">Report an Issue →</button>
+        <button class="btn-outline" onclick="goTo('track')">Track Your Complaint</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats-strip reveal">
+    <div class="stats-inner">
+      <div>
+        <div class="stat-num" id="stat1">0</div>
+        <div class="stat-label">Complaints Resolved</div>
+      </div>
+      <div>
+        <div class="stat-num" id="stat2">0<span>h</span></div>
+        <div class="stat-label">Avg. Resolution Time</div>
+      </div>
+      <div>
+        <div class="stat-num" id="stat3">0<span>%</span></div>
+        <div class="stat-label">Student Satisfaction</div>
+      </div>
+      <div>
+        <div class="stat-num" id="stat4">0<span>+</span></div>
+        <div class="stat-label">Active Hostels</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEATURES -->
+  <div class="section">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">Why Resolv</div>
+      <h2 class="section-title">Everything you need to manage hostel issues</h2>
+      <p class="section-sub">From submission to resolution — total visibility at every step.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card reveal">
+        <div class="feature-icon" style="background:rgba(108,99,255,0.15)">📋</div>
+        <div class="feature-title">Smart Complaint Filing</div>
+        <div class="feature-desc">File complaints in seconds. Categorize by type, urgency, and location. Attach photos for faster resolution.</div>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon" style="background:rgba(77,195,255,0.15)">🔍</div>
+        <div class="feature-title">Real-time Tracking</div>
+        <div class="feature-desc">Follow your complaint through every stage — from submission to resolution — with live status updates.</div>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon" style="background:rgba(107,203,119,0.15)">📊</div>
+        <div class="feature-title">Analytics & Trends</div>
+        <div class="feature-desc">Identify recurring issues, peak complaint times, and bottlenecks to optimize hostel maintenance.</div>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon" style="background:rgba(255,217,61,0.15)">🔔</div>
+        <div class="feature-title">Instant Notifications</div>
+        <div class="feature-desc">Get notified the moment your complaint is assigned, updated, or resolved. No more chasing updates.</div>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon" style="background:rgba(255,107,107,0.15)">⚡</div>
+        <div class="feature-title">Priority Escalation</div>
+        <div class="feature-desc">Urgent issues are automatically flagged and escalated to the right person immediately.</div>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon" style="background:rgba(108,99,255,0.15)">🏠</div>
+        <div class="feature-title">Admin Dashboard</div>
+        <div class="feature-desc">Hostel authorities get a powerful panel to assign, categorize, and resolve issues efficiently.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <div class="section" style="background: rgba(255,255,255,0.02); border-top:1px solid var(--card-border); border-bottom: 1px solid var(--card-border);">
+    <div class="section-header reveal">
+      <div class="section-eyebrow">Process</div>
+      <h2 class="section-title">From report to resolved in four steps</h2>
+    </div>
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <div class="step-title">File your complaint</div>
+          <div class="step-desc">Fill out a simple form describing your issue. Select the category, floor/room, and urgency level. Attach photos if needed.</div>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <div class="step-title">Automated routing</div>
+          <div class="step-desc">Resolv automatically assigns your complaint to the right department based on category and location.</div>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <div class="step-title">Track progress in real time</div>
+          <div class="step-desc">Watch as your complaint moves through stages — Assigned → In Progress → Resolved. You're notified at every step.</div>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <div class="step-title">Rate and close</div>
+          <div class="step-desc">Once resolved, rate your experience. Your feedback helps improve hostel services for everyone.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="section" style="text-align: center;">
+    <div class="reveal">
+      <h2 class="section-title">Ready to get your issues resolved?</h2>
+      <p class="section-sub" style="max-width: 400px; margin: 0 auto 2rem;">Join thousands of students who no longer wait in silence.</p>
+      <button class="btn-primary" onclick="goTo('complaint')" style="font-size: 1.1rem; padding: 1rem 2.5rem;">Start Filing Now →</button>
+    </div>
+  </div>
+
+</div>
+
+<!-- Toast -->
+<div id="toast">
+  <span id="toast-icon">✅</span>
+  <span id="toast-msg">Done!</span>
+</div>
+
+<script src="js/shared.js"></script>
+<script src="js/home.js"></script>
+</body>
+</html>

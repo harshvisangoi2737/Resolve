@@ -1,0 +1,55 @@
+/* =========================================================
+   ANALYTICS.CSS — Analytics page (#page-analytics)
+   Metric cards reuse base.css. This covers analytics-specific
+   cards: heat map, top issues, mini/trend bars.
+   ========================================================= */
+
+#page-analytics { padding-top: 80px; }
+.analytics-wrapper { max-width: 1100px; margin: 0 auto; padding: 2rem; }
+.analytics-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 1.5rem; }
+.analytics-card {
+  background: var(--card-bg); border: 1px solid var(--card-border);
+  border-radius: 16px; padding: 1.5rem;
+}
+.analytics-card-title { font-size: 0.9rem; font-weight: 600; color: #fff; margin-bottom: 1.5rem; }
+
+/* MINI BAR CHART */
+.mini-bars { display: flex; align-items: flex-end; gap: 8px; height: 120px; margin-top: 1rem; }
+.mini-bar { flex: 1; border-radius: 6px 6px 0 0; position: relative; cursor: pointer; transition: opacity 0.2s; }
+.mini-bar:hover { opacity: 0.8; }
+.mini-bar-label {
+  position: absolute; bottom: -20px; left: 50%; transform: translateX(-50%);
+  font-size: 0.7rem; color: var(--text-muted); white-space: nowrap;
+}
+.trend-chart { display: flex; align-items: flex-end; gap: 4px; height: 80px; }
+.trend-bar { flex: 1; border-radius: 3px 3px 0 0; transition: all 0.3s; }
+
+/* HEAT MAP */
+.heat-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+.heat-cell {
+  aspect-ratio: 1; border-radius: 4px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.65rem; font-weight: 600;
+}
+.heat-0 { background: rgba(255,255,255,0.04); }
+.heat-1 { background: rgba(108,99,255,0.2); color: var(--primary); }
+.heat-2 { background: rgba(108,99,255,0.4); color: #a8a3ff; }
+.heat-3 { background: rgba(108,99,255,0.7); color: #fff; }
+.heat-4 { background: var(--primary); color: #fff; }
+
+/* TOP ISSUES */
+.top-issues { display: flex; flex-direction: column; gap: 0.8rem; }
+.issue-row { display: flex; align-items: center; gap: 1rem; }
+.issue-rank {
+  width: 24px; height: 24px; border-radius: 6px;
+  background: rgba(108,99,255,0.15); color: var(--primary);
+  font-size: 0.75rem; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+}
+.issue-name { flex: 1; font-size: 0.9rem; color: var(--text); }
+.issue-count { font-size: 0.85rem; font-weight: 600; color: var(--text-muted); }
+
+/* RESPONSIVE (analytics specific) */
+@media (max-width: 768px) {
+  .analytics-grid { grid-template-columns: 1fr; }
+}

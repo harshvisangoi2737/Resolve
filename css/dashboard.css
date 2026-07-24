@@ -1,0 +1,59 @@
+/* =========================================================
+   DASHBOARD.CSS — Dashboard page (#page-dashboard)
+   Metrics grid styling lives in base.css (shared with analytics).
+   This file covers layout + complaints table + activity + charts
+   specific to the dashboard.
+   ========================================================= */
+
+#page-dashboard { padding-top: 80px; }
+.dashboard-wrapper { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+
+/* COMPLAINTS TABLE + SIDE GRID */
+.dash-grid { display: grid; grid-template-columns: 1fr 350px; gap: 1.5rem; }
+.complaints-table { width: 100%; border-collapse: collapse; }
+.complaints-table th {
+  text-align: left; padding: 0.8rem 1.5rem;
+  font-size: 0.75rem; font-weight: 600;
+  color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em;
+  border-bottom: 1px solid var(--card-border);
+}
+.complaints-table td {
+  padding: 1rem 1.5rem; font-size: 0.9rem;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.complaints-table tr:hover td { background: rgba(255,255,255,0.03); }
+
+/* RECENT ACTIVITY */
+.activity-list { padding: 0.5rem 0; }
+.activity-item {
+  display: flex; gap: 1rem; padding: 0.9rem 1.5rem;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  align-items: flex-start;
+}
+.activity-avatar {
+  width: 36px; height: 36px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.8rem; font-weight: 700; flex-shrink: 0;
+}
+.activity-text { font-size: 0.85rem; line-height: 1.5; }
+.activity-time { font-size: 0.75rem; color: var(--text-muted); margin-top: 2px; }
+.activity-name { font-weight: 600; color: #fff; }
+
+/* DONUT CHART */
+.donut-wrap { padding: 1.5rem; display: flex; flex-direction: column; align-items: center; }
+.donut-legend { display: flex; flex-direction: column; gap: 0.6rem; width: 100%; margin-top: 1rem; }
+.legend-item { display: flex; align-items: center; gap: 0.7rem; font-size: 0.85rem; }
+.legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+.legend-val { margin-left: auto; font-weight: 600; }
+
+/* CHART AREA (bar chart + weekly trend side by side) */
+.chart-section {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+/* RESPONSIVE (dashboard specific) */
+@media (max-width: 768px) {
+  .dash-grid { grid-template-columns: 1fr; }
+  .chart-section { grid-template-columns: 1fr; }
+}

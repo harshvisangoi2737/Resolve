@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Track Complaint — Resolv</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/track.css">
+</head>
+<body>
+
+<canvas id="bg-canvas"></canvas>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-logo">Re<span>solv</span></div>
+  <ul class="nav-links">
+    <li><a onclick="goTo('index')">Home</a></li>
+    <li><a onclick="goTo('dashboard')">Dashboard</a></li>
+    <li><a onclick="goTo('complaint')">File Complaint</a></li>
+    <li><a onclick="goTo('track')">Track</a></li>
+    <li><a onclick="goTo('analytics')">Analytics</a></li>
+    <li><a onclick="goTo('admin')">Admin</a></li>
+  </ul>
+  <button class="nav-cta" onclick="goTo('complaint')">File a Complaint</button>
+</nav>
+
+<!-- ===================== TRACK PAGE ===================== -->
+<div id="page-track" class="page active">
+  <div class="track-wrapper">
+    <div class="form-title">Track Your Complaint</div>
+    <p class="form-sub">Enter your ticket ID to see the current status and history.</p>
+
+    <div class="search-bar">
+      <input type="text" class="form-input" placeholder="Enter ticket ID  e.g. RES-2847" id="track-input" value="RES-2847">
+      <button class="btn-primary" onclick="loadTrack()">Track →</button>
+    </div>
+
+    <div id="track-result" style="display:none;">
+  <div class="complaint-detail-card">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;">
+      <div>
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:1.3rem;font-weight:700;color:#fff;" id="track-title">—</div>
+        <div style="color:var(--text-muted);font-size:0.85rem;margin-top:2px;" id="track-ticket">—</div>
+      </div>
+      <span class="priority-badge p-high" id="track-priority-badge" style="padding:6px 16px;font-size:0.85rem;">—</span>
+    </div>
+    <div class="detail-row"><span class="detail-key">Category</span><span class="detail-val" id="track-category">—</span></div>
+    <div class="detail-row"><span class="detail-key">Location</span><span class="detail-val" id="track-location">—</span></div>
+    <div class="detail-row"><span class="detail-key">Filed by</span><span class="detail-val" id="track-filed">—</span></div>
+    <div class="detail-row"><span class="detail-key">Current Status</span><span class="detail-val" id="track-status">—</span></div>
+    <div class="detail-row"><span class="detail-key">Priority</span><span class="detail-val" id="track-priority">—</span></div>
+    <div class="detail-row"><span class="detail-key">Assigned To</span><span class="detail-val" id="track-assigned">—</span></div>
+    <div class="detail-row"><span class="detail-key">Filed On</span><span class="detail-val" id="track-date">—</span></div>
+  </div>
+
+  <div style="margin-bottom: 1.5rem;">
+    <div style="font-weight:600;color:#fff;margin-bottom:1.5rem;">Complaint Timeline</div>
+    <div class="timeline">
+      <div class="timeline-event done">
+        <div class="event-time" id="tl-submitted-time">—</div>
+        <div class="event-title">Complaint submitted</div>
+        <div class="event-desc">Complaint registered successfully.</div>
+      </div>
+      <div class="timeline-event" id="tl-progress">
+        <div class="event-time">—</div>
+        <div class="event-title">In Progress</div>
+        <div class="event-desc">Assigned to maintenance team.</div>
+      </div>
+      <div class="timeline-event" id="tl-resolved">
+        <div class="event-time">Pending</div>
+        <div class="event-title">Resolved</div>
+        <div class="event-desc">Issue resolved and closed.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="padding: 1.5rem;">
+    <div class="card-title" style="margin-bottom: 1rem;">How was our service so far?</div>
+    <div style="display:flex;gap:0.5rem;font-size:1.8rem;cursor:pointer;" id="star-rating">
+      <span onclick="rateStar(1)">☆</span>
+      <span onclick="rateStar(2)">☆</span>
+      <span onclick="rateStar(3)">☆</span>
+      <span onclick="rateStar(4)">☆</span>
+      <span onclick="rateStar(5)">☆</span>
+    </div>
+    <textarea class="form-textarea" placeholder="Any feedback for the team?" style="margin-top:1rem;min-height:60px;"></textarea>
+    <button class="btn-primary" style="margin-top:1rem;" onclick="showToast('Feedback submitted! Thank you.')">Submit Feedback</button>
+  </div>
+</div>
+      <div style="margin-bottom: 1.5rem;">
+        <div style="font-weight:600;color:#fff;margin-bottom:1.5rem;">Complaint Timeline</div>
+        <div class="timeline">
+          <div class="timeline-event done">
+            <div class="event-time">June 12, 10:30 AM</div>
+            <div class="event-title">Complaint submitted</div>
+            <div class="event-desc">Complaint registered successfully. Ticket #RES-2847 created.</div>
+          </div>
+          <div class="timeline-event done">
+            <div class="event-time">June 12, 10:35 AM</div>
+            <div class="event-title">Automatically routed</div>
+            <div class="event-desc">Assigned to IT Maintenance Team based on complaint category.</div>
+          </div>
+          <div class="timeline-event done">
+            <div class="event-time">June 12, 10:52 AM</div>
+            <div class="event-title">Acknowledged</div>
+            <div class="event-desc">Technician Rajan Kumar reviewed and accepted the complaint.</div>
+          </div>
+          <div class="timeline-event current">
+            <div class="event-time">June 12, 11:15 AM</div>
+            <div class="event-title">Work in progress ← You are here</div>
+            <div class="event-desc">Technician is on-site investigating the router issue in Block B.</div>
+          </div>
+          <div class="timeline-event">
+            <div class="event-time">Pending</div>
+            <div class="event-title">Resolution & Verification</div>
+            <div class="event-desc">Issue will be resolved and you'll receive a confirmation notification.</div>
+          </div>
+          <div class="timeline-event">
+            <div class="event-time">Pending</div>
+            <div class="event-title">Closed & Rated</div>
+            <div class="event-desc">Rate your experience to help us improve.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Rating -->
+      <div class="card" style="padding: 1.5rem;">
+        <div class="card-title" style="margin-bottom: 1rem;">How was our service so far?</div>
+        <div style="display:flex;gap:0.5rem;font-size:1.8rem;cursor:pointer;" id="star-rating">
+          <span onclick="rateStar(1)">☆</span>
+          <span onclick="rateStar(2)">☆</span>
+          <span onclick="rateStar(3)">☆</span>
+          <span onclick="rateStar(4)">☆</span>
+          <span onclick="rateStar(5)">☆</span>
+        </div>
+        <textarea class="form-textarea" placeholder="Any feedback for the team?" style="margin-top:1rem;min-height:60px;"></textarea>
+        <button class="btn-primary" style="margin-top:1rem;" onclick="showToast('Feedback submitted! Thank you.')">Submit Feedback</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div id="toast">
+  <span id="toast-icon">✅</span>
+  <span id="toast-msg">Done!</span>
+</div>
+
+<script src="js/shared.js"></script>
+<script src="js/track.js"></script>
+</body>
+</html>

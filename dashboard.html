@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard — Resolv</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+
+<canvas id="bg-canvas"></canvas>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-logo">Re<span>solv</span></div>
+  <ul class="nav-links">
+    <li><a onclick="goTo('index')">Home</a></li>
+    <li><a onclick="goTo('dashboard')">Dashboard</a></li>
+    <li><a onclick="goTo('complaint')">File Complaint</a></li>
+    <li><a onclick="goTo('track')">Track</a></li>
+    <li><a onclick="goTo('analytics')">Analytics</a></li>
+    <li><a onclick="goTo('admin')">Admin</a></li>
+  </ul>
+  <button class="nav-cta" onclick="goTo('complaint')">File a Complaint</button>
+</nav>
+
+<!-- ===================== DASHBOARD PAGE ===================== -->
+<div id="page-dashboard" class="page active">
+  <div class="dashboard-wrapper">
+    <div class="dash-header">
+      <div>
+        <div class="dash-title">Dashboard</div>
+        <div class="dash-sub">Overview of all hostel complaints — updated live</div>
+      </div>
+      <button class="btn-primary" onclick="goTo('complaint')">+ New Complaint</button>
+    </div>
+
+    <div class="metrics-grid">
+      <div class="metric-card mc-purple">
+        <div class="metric-label">Total Complaints</div>
+        <div class="metric-value">247</div>
+        <div class="metric-trend trend-up">↑ 12 this week</div>
+      </div>
+      <div class="metric-card mc-red">
+        <div class="metric-label">Urgent / Open</div>
+        <div class="metric-value">18</div>
+        <div class="metric-trend trend-down">↓ 3 from yesterday</div>
+      </div>
+      <div class="metric-card mc-green">
+        <div class="metric-label">Resolved Today</div>
+        <div class="metric-value">9</div>
+        <div class="metric-trend trend-up">↑ 4 from avg</div>
+      </div>
+      <div class="metric-card mc-yellow">
+        <div class="metric-label">Avg. Resolution</div>
+        <div class="metric-value">4.2h</div>
+        <div class="metric-trend trend-up">↓ 0.8h improved</div>
+      </div>
+    </div>
+
+    <div class="dash-grid">
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Recent Complaints</span>
+          <span style="font-size: 0.8rem; color: var(--primary); cursor: pointer;" onclick="goTo('admin')">View all →</span>
+        </div>
+        <table class="complaints-table">
+          <thead>
+            <tr>
+              <th>Issue</th>
+              <th>Location</th>
+              <th>Priority</th>
+              <th>Status</th>
+              <th>Time</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Water supply failure</td>
+              <td>Block A, Fl.2</td>
+              <td><span class="priority-badge p-high">High</span></td>
+              <td><span class="status-dot"><span class="dot d-urgent"></span> Urgent</span></td>
+              <td style="color:var(--text-muted)">5m ago</td>
+            </tr>
+            <tr>
+              <td>WiFi not working</td>
+              <td>Room 312</td>
+              <td><span class="priority-badge p-high">High</span></td>
+              <td><span class="status-dot"><span class="dot d-progress"></span> In Progress</span></td>
+              <td style="color:var(--text-muted)">22m ago</td>
+            </tr>
+            <tr>
+              <td>Fan not working</td>
+              <td>Room 108</td>
+              <td><span class="priority-badge p-medium">Medium</span></td>
+              <td><span class="status-dot"><span class="dot d-open"></span> Open</span></td>
+              <td style="color:var(--text-muted)">1h ago</td>
+            </tr>
+            <tr>
+              <td>Toilet clogged</td>
+              <td>Block C, Fl.1</td>
+              <td><span class="priority-badge p-high">High</span></td>
+              <td><span class="status-dot"><span class="dot d-progress"></span> In Progress</span></td>
+              <td style="color:var(--text-muted)">2h ago</td>
+            </tr>
+            <tr>
+              <td>Broken window</td>
+              <td>Room 215</td>
+              <td><span class="priority-badge p-low">Low</span></td>
+              <td><span class="status-dot"><span class="dot d-resolved"></span> Resolved</span></td>
+              <td style="color:var(--text-muted)">4h ago</td>
+            </tr>
+            <tr>
+              <td>Noise disturbance</td>
+              <td>Floor 4</td>
+              <td><span class="priority-badge p-medium">Medium</span></td>
+              <td><span class="status-dot"><span class="dot d-resolved"></span> Resolved</span></td>
+              <td style="color:var(--text-muted)">6h ago</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div>
+        <div class="card" style="margin-bottom: 1.5rem;">
+          <div class="card-header"><span class="card-title">Recent Activity</span></div>
+          <div class="activity-list">
+            <div class="activity-item">
+              <div class="activity-avatar" style="background:rgba(107,203,119,0.15); color:var(--success)">RS</div>
+              <div>
+                <div class="activity-text"><span class="activity-name">Rajan S.</span> resolved the water leak in Block A</div>
+                <div class="activity-time">Just now</div>
+              </div>
+            </div>
+            <div class="activity-item">
+              <div class="activity-avatar" style="background:rgba(108,99,255,0.15); color:var(--primary)">AT</div>
+              <div>
+                <div class="activity-text"><span class="activity-name">Aryan T.</span> filed a new complaint about WiFi</div>
+                <div class="activity-time">22 min ago</div>
+              </div>
+            </div>
+            <div class="activity-item">
+              <div class="activity-avatar" style="background:rgba(255,217,61,0.15); color:var(--warning)">MK</div>
+              <div>
+                <div class="activity-text"><span class="activity-name">Maintenance</span> assigned to toilet issue in Block C</div>
+                <div class="activity-time">1h ago</div>
+              </div>
+            </div>
+            <div class="activity-item">
+              <div class="activity-avatar" style="background:rgba(255,107,107,0.15); color:var(--danger)">PV</div>
+              <div>
+                <div class="activity-text"><span class="activity-name">Priya V.</span> escalated broken window to urgent</div>
+                <div class="activity-time">3h ago</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header"><span class="card-title">Status Distribution</span></div>
+          <div class="donut-wrap">
+            <svg viewBox="0 0 120 120" width="120" height="120">
+              <circle cx="60" cy="60" r="45" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="18"/>
+              <circle cx="60" cy="60" r="45" fill="none" stroke="#6BCB77" stroke-width="18"
+                stroke-dasharray="113 170" stroke-dashoffset="-42" transform="rotate(-90 60 60)"/>
+              <circle cx="60" cy="60" r="45" fill="none" stroke="#4DC3FF" stroke-width="18"
+                stroke-dasharray="70 213" stroke-dashoffset="-155" transform="rotate(-90 60 60)"/>
+              <circle cx="60" cy="60" r="45" fill="none" stroke="#FF6B6B" stroke-width="18"
+                stroke-dasharray="43 240" stroke-dashoffset="-225" transform="rotate(-90 60 60)"/>
+              <circle cx="60" cy="60" r="45" fill="none" stroke="#FFD93D" stroke-width="18"
+                stroke-dasharray="57 226" stroke-dashoffset="-268" transform="rotate(-90 60 60)"/>
+              <text x="60" y="55" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="Space Grotesk">247</text>
+              <text x="60" y="70" text-anchor="middle" fill="#64748b" font-size="8">total</text>
+            </svg>
+            <div class="donut-legend">
+              <div class="legend-item"><div class="legend-dot" style="background:#6BCB77"></div><span>Resolved</span><span class="legend-val" style="color:var(--success)">113</span></div>
+              <div class="legend-item"><div class="legend-dot" style="background:#4DC3FF"></div><span>In Progress</span><span class="legend-val" style="color:var(--info)">70</span></div>
+              <div class="legend-item"><div class="legend-dot" style="background:#FFD93D"></div><span>Open</span><span class="legend-val" style="color:var(--warning)">46</span></div>
+              <div class="legend-item"><div class="legend-dot" style="background:#FF6B6B"></div><span>Urgent</span><span class="legend-val" style="color:var(--danger)">18</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="chart-section">
+      <div class="card bar-chart">
+        <div class="card-header"><span class="card-title">Complaints by Category</span></div>
+        <div style="padding: 1.5rem 0 0;">
+          <div class="bar-group">
+            <div class="bar-label"><span>Maintenance</span><span style="color:#fff">78</span></div>
+            <div class="bar-track"><div class="bar-fill" style="width:78%; background: var(--primary);"></div></div>
+          </div>
+          <div class="bar-group">
+            <div class="bar-label"><span>Electricity</span><span style="color:#fff">52</span></div>
+            <div class="bar-track"><div class="bar-fill" style="width:52%; background: var(--warning);"></div></div>
+          </div>
+          <div class="bar-group">
+            <div class="bar-label"><span>Internet</span><span style="color:#fff">45</span></div>
+            <div class="bar-track"><div class="bar-fill" style="width:45%; background: var(--info);"></div></div>
+          </div>
+          <div class="bar-group">
+            <div class="bar-label"><span>Cleanliness</span><span style="color:#fff">39</span></div>
+            <div class="bar-track"><div class="bar-fill" style="width:39%; background: var(--success);"></div></div>
+          </div>
+          <div class="bar-group">
+            <div class="bar-label"><span>Noise</span><span style="color:#fff">33</span></div>
+            <div class="bar-track"><div class="bar-fill" style="width:33%; background: var(--accent);"></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="card bar-chart">
+        <div class="card-header"><span class="card-title">Weekly Trend</span></div>
+        <div style="padding: 1.5rem 0 0; display: flex; flex-direction: column; gap: 1rem;">
+          <div style="display: flex; align-items: flex-end; gap: 8px; height: 120px; padding-bottom: 20px;">
+            <div style="flex:1; background:rgba(108,99,255,0.3); border-radius:6px 6px 0 0; height:40%; position:relative;"><span style="position:absolute;bottom:-18px;left:50%;transform:translateX(-50%);font-size:0.68rem;color:var(--text-muted)">Mon</span></div>
+            <div style="flex:1; background:rgba(108,99,255,0.5); border-radius:6px 6px 0 0; height:65%; position:relative;"><span style="position:absolute;bottom:-18px;left:50%;transform:translateX(-50%);font-size:0.68rem;color:var(--text-muted)">Tue</span></div>
+            <div style="flex:1; background:rgba(108,99,255,0.7); border-radius:6px 6px 0 0; height:80%; position:relative;"><span style="position:absolute;bottom:-18px;left:50%;transform:translateX(-50%);font-size:0.68rem;color:var(--text-muted)">Wed</span></div>
+            <div style="flex:1; background:rgba(108,99,255,0.5); border-radius:6px 6px 0 0; height:55%; position:relative;"><span style="position:absolute;bottom:-18px;left:50%;transform:translateX(-50%);font-size:0.68rem;color:var(--text-muted)">Thu</span></div>
+            <div style="flex:1; background:rgba(108,99,255,0.9); border-radius:6px 6px 0 0; height:95%; position:relative;"><span style="position:absolute;bottom:-18px;left:50%;transform:translateX(-50%);font-size:0.68rem;color:var(--text-muted)">Fri</span></div>
+            <div style="flex:1; background:rgba(108,99,255,0.4); border-radius:6px 6px 0 0; height:45%; position:relative;"><span style="position:absolute;bottom:-18px;left:50%;transform:translateX(-50%);font-size:0.68rem;color:var(--text-muted)">Sat</span></div>
+            <div style="flex:1; background:rgba(108,99,255,0.2); border-radius:6px 6px 0 0; height:20%; position:relative;"><span style="position:absolute;bottom:-18px;left:50%;transform:translateX(-50%);font-size:0.68rem;color:var(--text-muted)">Sun</span></div>
+          </div>
+          <p style="font-size:0.82rem;color:var(--text-muted)">Fridays see the highest complaint volume — typically end-of-week maintenance backlogs.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div id="toast">
+  <span id="toast-icon">✅</span>
+  <span id="toast-msg">Done!</span>
+</div>
+
+<script src="js/shared.js"></script>
+<script src="js/dashboard.js"></script>
+</body>
+</html>

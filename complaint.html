@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>File a Complaint — Resolv</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/complaint.css">
+</head>
+<body>
+
+<canvas id="bg-canvas"></canvas>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-logo">Re<span>solv</span></div>
+  <ul class="nav-links">
+    <li><a onclick="goTo('index')">Home</a></li>
+    <li><a onclick="goTo('dashboard')">Dashboard</a></li>
+    <li><a onclick="goTo('complaint')">File Complaint</a></li>
+    <li><a onclick="goTo('track')">Track</a></li>
+    <li><a onclick="goTo('analytics')">Analytics</a></li>
+    <li><a onclick="goTo('admin')">Admin</a></li>
+  </ul>
+  <button class="nav-cta" onclick="goTo('complaint')">File a Complaint</button>
+</nav>
+
+<!-- ===================== FILE COMPLAINT PAGE ===================== -->
+<div id="page-complaint" class="page active">
+  <div class="complaint-wrapper">
+    <div class="form-title">Report an Issue</div>
+    <p class="form-sub">Fill out the form below and we'll get it resolved as fast as possible.</p>
+
+    <div class="progress-steps" id="prog-steps">
+      <div class="prog-step active" id="ps-1">
+        <div class="prog-circle">1</div>
+        <div class="prog-label">Details</div>
+      </div>
+      <div class="prog-step" id="ps-2">
+        <div class="prog-circle">2</div>
+        <div class="prog-label">Location</div>
+      </div>
+      <div class="prog-step" id="ps-3">
+        <div class="prog-circle">3</div>
+        <div class="prog-label">Priority</div>
+      </div>
+      <div class="prog-step" id="ps-4">
+        <div class="prog-circle">4</div>
+        <div class="prog-label">Review</div>
+      </div>
+    </div>
+
+    <!-- Step 1 -->
+    <div class="form-step active" id="fs-1">
+      <div class="form-group">
+        <label class="form-label">Your Name</label>
+        <input type="text" class="form-input" placeholder="Full name" id="inp-name">
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Student ID</label>
+          <input type="text" class="form-input" placeholder="e.g. 2023CS042" id="inp-id">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Phone Number</label>
+          <input type="text" class="form-input" placeholder="10-digit number" id="inp-phone">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Complaint Category</label>
+        <div class="category-chips">
+          <div class="chip" onclick="selectChip(this,'cat')">💧 Water Supply</div>
+          <div class="chip" onclick="selectChip(this,'cat')">⚡ Electricity</div>
+          <div class="chip" onclick="selectChip(this,'cat')">🌐 Internet</div>
+          <div class="chip" onclick="selectChip(this,'cat')">🔧 Maintenance</div>
+          <div class="chip" onclick="selectChip(this,'cat')">🧹 Cleanliness</div>
+          <div class="chip" onclick="selectChip(this,'cat')">🔊 Noise</div>
+          <div class="chip" onclick="selectChip(this,'cat')">🚪 Security</div>
+          <div class="chip" onclick="selectChip(this,'cat')">❓ Other</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Issue Title</label>
+        <input type="text" class="form-input" placeholder="Short description of the problem" id="inp-title">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Detailed Description</label>
+        <textarea class="form-textarea" placeholder="Describe the issue in detail..." id="inp-desc"></textarea>
+      </div>
+      <div class="form-actions">
+        <div></div>
+        <button class="btn-primary" onclick="nextStep(2)">Next: Location →</button>
+      </div>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="form-step" id="fs-2">
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Hostel Block</label>
+          <select class="form-select" id="inp-block">
+            <option value="">Select block</option>
+            <option>Block A</option>
+            <option>Block B</option>
+            <option>Block C</option>
+            <option>Block D</option>
+            <option>Common Area</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Floor</label>
+          <select class="form-select" id="inp-floor">
+            <option value="">Select floor</option>
+            <option>Ground Floor</option>
+            <option>Floor 1</option>
+            <option>Floor 2</option>
+            <option>Floor 3</option>
+            <option>Floor 4</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Room Number (if applicable)</label>
+        <input type="text" class="form-input" placeholder="e.g. 204, or leave blank for common areas" id="inp-room">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Specific Location Details</label>
+        <textarea class="form-textarea" placeholder="Any additional location details that will help find the issue..." style="min-height: 80px;" id="inp-locdet"></textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Attach Photos (optional)</label>
+        <div class="upload-zone" onclick="showToast('Photo upload feature coming soon!')">
+          <div class="upload-icon">📷</div>
+          <div style="font-weight: 600; margin-bottom: 4px;">Drop photos here or click to browse</div>
+          <div style="font-size: 0.8rem;">JPG, PNG up to 10MB each</div>
+        </div>
+      </div>
+      <div class="form-actions">
+        <button class="btn-outline" onclick="nextStep(1)">← Back</button>
+        <button class="btn-primary" onclick="nextStep(3)">Next: Priority →</button>
+      </div>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="form-step" id="fs-3">
+      <div class="form-group">
+        <label class="form-label">How urgent is this issue?</label>
+        <div class="priority-options">
+          <div class="priority-opt low" onclick="selectPriority(this,'Low')">
+            <div class="prio-icon">🟢</div>
+            <div class="prio-label" style="color:var(--success)">Low</div>
+            <div style="font-size:0.75rem;color:var(--text-muted);margin-top:4px">Can wait a few days</div>
+          </div>
+          <div class="priority-opt medium" onclick="selectPriority(this,'Medium')">
+            <div class="prio-icon">🟡</div>
+            <div class="prio-label" style="color:var(--warning)">Medium</div>
+            <div style="font-size:0.75rem;color:var(--text-muted);margin-top:4px">Needs attention soon</div>
+          </div>
+          <div class="priority-opt high" onclick="selectPriority(this,'High')">
+            <div class="prio-icon">🔴</div>
+            <div class="prio-label" style="color:var(--danger)">High</div>
+            <div style="font-size:0.75rem;color:var(--text-muted);margin-top:4px">Immediate action needed</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group" style="margin-top: 2rem;">
+        <label class="form-label">When did the issue start?</label>
+        <input type="datetime-local" class="form-input" id="inp-time">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Any additional notes for the maintenance team?</label>
+        <textarea class="form-textarea" placeholder="e.g. Best time to visit, access instructions..." style="min-height:80px;" id="inp-notes"></textarea>
+      </div>
+      <div class="form-actions">
+        <button class="btn-outline" onclick="nextStep(2)">← Back</button>
+        <button class="btn-primary" onclick="nextStep(4)">Review Complaint →</button>
+      </div>
+    </div>
+
+    <!-- Step 4 Review -->
+    <div class="form-step" id="fs-4">
+      <div class="complaint-detail-card" id="review-card">
+        <div style="font-size:0.9rem;font-weight:700;color:#fff;margin-bottom:1rem;">Review your complaint</div>
+        <div id="review-content"></div>
+      </div>
+      <div class="form-actions">
+        <button class="btn-outline" onclick="nextStep(3)">← Edit</button>
+        <button class="btn-primary" onclick="submitComplaint()">Submit Complaint ✓</button>
+      </div>
+    </div>
+
+    <!-- Success -->
+    <div class="success-screen" id="success-screen">
+      <div class="success-icon">✅</div>
+      <h2 style="font-family:'Space Grotesk',sans-serif;font-size:1.8rem;font-weight:700;color:#fff;margin-bottom:0.5rem;">Complaint Filed!</h2>
+      <p style="color:var(--text-muted);">Your issue has been registered and routed to the relevant team.</p>
+      <div class="ticket-id" id="ticket-display">RES-0000</div>
+      <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:2rem;">Save this ticket ID to track your complaint status.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+        <button class="btn-primary" onclick="goTo('track')">Track this Complaint</button>
+        <button class="btn-outline" onclick="resetForm()">File Another</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div id="toast">
+  <span id="toast-icon">✅</span>
+  <span id="toast-msg">Done!</span>
+</div>
+
+<script src="js/shared.js"></script>
+<script src="js/complaint.js"></script>
+</body>
+</html>

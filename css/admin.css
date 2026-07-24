@@ -1,0 +1,38 @@
+/* =========================================================
+   ADMIN.CSS — Admin Panel page (#page-admin)
+   Filter bar, admin table, actions.
+   .act-btn base styling lives in base.css (shared with other pages).
+   ========================================================= */
+
+#page-admin { padding-top: 80px; }
+.admin-wrapper { max-width: 1100px; margin: 0 auto; padding: 2rem; }
+.filter-bar {
+  display: flex; gap: 0.8rem; margin-bottom: 1.5rem; flex-wrap: wrap;
+  align-items: center;
+}
+.filter-chip {
+  padding: 0.4rem 1rem; border-radius: 50px;
+  border: 1px solid var(--card-border); background: transparent;
+  color: var(--text-muted); font-size: 0.82rem; font-weight: 500;
+  cursor: pointer; transition: all 0.2s; font-family: 'Inter', sans-serif;
+}
+.filter-chip.active { background: var(--primary); border-color: var(--primary); color: #fff; }
+.admin-table-wrap { overflow-x: auto; }
+.admin-table {
+  width: 100%; border-collapse: collapse;
+  background: var(--card-bg); border-radius: 16px; overflow: hidden;
+  border: 1px solid var(--card-border);
+}
+.admin-table th {
+  padding: 0.9rem 1.2rem; text-align: left;
+  font-size: 0.78rem; font-weight: 600;
+  color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em;
+  background: rgba(255,255,255,0.02);
+  border-bottom: 1px solid var(--card-border);
+}
+.admin-table td {
+  padding: 1rem 1.2rem; font-size: 0.875rem;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.admin-table tr:hover td { background: rgba(255,255,255,0.02); }
+.action-btns { display: flex; gap: 0.5rem; }

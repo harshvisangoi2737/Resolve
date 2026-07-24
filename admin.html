@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Panel — Resolv</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+<canvas id="bg-canvas"></canvas>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-logo">Re<span>solv</span></div>
+  <ul class="nav-links">
+    <li><a onclick="goTo('index')">Home</a></li>
+    <li><a onclick="goTo('dashboard')">Dashboard</a></li>
+    <li><a onclick="goTo('complaint')">File Complaint</a></li>
+    <li><a onclick="goTo('track')">Track</a></li>
+    <li><a onclick="goTo('analytics')">Analytics</a></li>
+    <li><a onclick="goTo('admin')">Admin</a></li>
+  </ul>
+  <button class="nav-cta" onclick="goTo('complaint')">File a Complaint</button>
+</nav>
+
+<!-- ===================== ADMIN PAGE ===================== -->
+<div id="page-admin" class="page active">
+  <div class="admin-wrapper">
+    <div class="dash-header">
+      <div>
+        <div class="dash-title">Admin Panel</div>
+        <div class="dash-sub">Manage and resolve all incoming complaints</div>
+      </div>
+      <div style="display:flex;gap:0.8rem;">
+        <input type="text" class="form-input" placeholder="Search complaints..." style="width:220px;">
+        <button class="btn-primary" onclick="showToast('Export started! CSV downloading...')">Export CSV</button>
+      </div>
+    </div>
+
+    <div class="filter-bar">
+      <button class="filter-chip active" onclick="filterAdmin(this,'all')">All (247)</button>
+      <button class="filter-chip" onclick="filterAdmin(this,'urgent')">🔴 Urgent (18)</button>
+      <button class="filter-chip" onclick="filterAdmin(this,'open')">🟡 Open (46)</button>
+      <button class="filter-chip" onclick="filterAdmin(this,'progress')">🔵 In Progress (70)</button>
+      <button class="filter-chip" onclick="filterAdmin(this,'resolved')">🟢 Resolved (113)</button>
+      <select class="form-select" style="width:auto;padding:0.4rem 1rem;font-size:0.82rem;">
+        <option>All Categories</option>
+        <option>Maintenance</option>
+        <option>Electricity</option>
+        <option>Internet</option>
+        <option>Cleanliness</option>
+      </select>
+    </div>
+
+    <div class="admin-table-wrap">
+      <table class="admin-table" id="admin-table">
+        <thead>
+          <tr>
+            <th>Ticket</th>
+            <th>Student</th>
+            <th>Issue</th>
+            <th>Location</th>
+            <th>Category</th>
+            <th>Priority</th>
+            <th>Status</th>
+            <th>Filed</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="admin-tbody"></tbody>
+      </table>
+    </div>
+
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-top:1.2rem;font-size:0.85rem;color:var(--text-muted);">
+      <span>Showing 10 of 247 complaints</span>
+      <div style="display:flex;gap:0.5rem;">
+        <button class="act-btn">← Prev</button>
+        <button class="act-btn" style="background:var(--primary);border-color:var(--primary);color:#fff;">1</button>
+        <button class="act-btn">2</button>
+        <button class="act-btn">3</button>
+        <button class="act-btn">Next →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div id="toast">
+  <span id="toast-icon">✅</span>
+  <span id="toast-msg">Done!</span>
+</div>
+
+<script src="js/shared.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>
