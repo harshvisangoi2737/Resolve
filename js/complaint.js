@@ -58,7 +58,7 @@ async function submitComplaint() {
     priority: selectedPriority || 'Medium'
   };
   try {
-    const response = await fetch('http://localhost:5000/api/complaints', {
+    const response = await fetch('https://resolv-backend-2mka.onrender.com/api/complaints', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data)

@@ -56,7 +56,7 @@ function filterAdmin(el, filter) {
 
 async function resolveComplaint(btn, ticketId) {
   try {
-    const res = await fetch(`http://localhost:5000/api/complaints/${ticketId}`, {
+    const res = await fetch(`https://resolv-backend-2mka.onrender.com/api/complaints/${ticketId}`, {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ status: 'Resolved' })

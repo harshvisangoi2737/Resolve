@@ -1,6 +1,6 @@
 async function loadDashboardStats() {
   try {
-    const res = await fetch('http://localhost:5000/api/complaints');
+    const res = await fetch('https://resolv-backend-2mka.onrender.com/api/complaints');
     const result = await res.json();
     if (!result.success) return;
 
