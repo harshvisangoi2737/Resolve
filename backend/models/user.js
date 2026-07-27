@@ -9,7 +9,6 @@ const userSchema = new mongoose.Schema({
   role: { type: String, enum: ['student', 'admin'], default: 'student' },
 }, { timestamps: true });
 
-// Hash password before saving
 userSchema.pre('save', async function(next) {
   if (!this.isModified('password')) return next();
   this.password = await bcrypt.hash(this.password, 10);
