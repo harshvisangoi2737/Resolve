@@ -1,11 +1,3 @@
-/* =========================================================
-   BASE.CSS
-   Shared across every page: variables, reset, navbar,
-   buttons, page-switching mechanics, toast, shared responsive.
-   Loaded first — page-specific CSS files build on top of this.
-   ========================================================= */
-
-/* ===== CSS VARIABLES ===== */
 :root {
   --primary: #6C63FF;
   --primary-dark: #4B44D6;
@@ -37,13 +29,13 @@ body {
   overflow-x: hidden;
 }
 
-/* ===== CANVAS BACKGROUND ===== */
+
 #bg-canvas {
   position: fixed; top: 0; left: 0; width: 100%; height: 100%;
   z-index: 0; pointer-events: none; opacity: 0.4;
 }
 
-/* ===== NAVBAR ===== */
+
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   padding: 1rem 2rem;
@@ -75,11 +67,11 @@ nav {
 }
 .nav-cta:hover { background: var(--primary-dark); transform: translateY(-1px); }
 
-/* ===== PAGE SWITCHING MECHANICS ===== */
+
 .page { display: none; min-height: 100vh; position: relative; z-index: 1; }
 .page.active { display: block; }
 
-/* ===== SHARED BUTTONS (used on every page) ===== */
+
 .btn-primary {
   background: var(--primary); color: #fff;
   padding: 0.9rem 2.2rem; border-radius: 10px;
@@ -104,7 +96,6 @@ nav {
   transform: translateY(-2px);
 }
 
-/* ===== SHARED CARD COMPONENT (used by dashboard/track/analytics/admin) ===== */
 .card {
   background: var(--card-bg); border: 1px solid var(--card-border);
   border-radius: 16px; overflow: hidden;
@@ -116,7 +107,6 @@ nav {
 }
 .card-title { font-size: 1rem; font-weight: 600; color: #fff; }
 
-/* ===== SHARED STATUS/PRIORITY BADGES (dashboard + admin + track) ===== */
 .priority-badge {
   padding: 3px 10px; border-radius: 50px; font-size: 0.75rem; font-weight: 600;
 }
@@ -132,7 +122,6 @@ nav {
 .d-resolved { background: var(--success); }
 .d-urgent { background: var(--danger); }
 
-/* ===== SHARED DASH HEADER (dashboard + analytics + admin) ===== */
 .dash-header {
   display: flex; justify-content: space-between; align-items: center;
   margin-bottom: 2rem;
@@ -143,7 +132,6 @@ nav {
 }
 .dash-sub { color: var(--text-muted); font-size: 0.9rem; margin-top: 4px; }
 
-/* ===== SHARED METRIC CARDS (dashboard + analytics) ===== */
 .metrics-grid {
   display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem;
   margin-bottom: 2rem;
@@ -169,7 +157,6 @@ nav {
 .trend-up { color: var(--success); }
 .trend-down { color: var(--danger); }
 
-/* ===== SHARED BAR CHART (dashboard + analytics) ===== */
 .bar-chart { padding: 1.5rem; }
 .bar-group { margin-bottom: 1.2rem; }
 .bar-label {
@@ -184,7 +171,6 @@ nav {
   transition: width 1s ease;
 }
 
-/* ===== SHARED FORM INPUTS (complaint form + track search + admin filters) ===== */
 .form-input, .form-select, .form-textarea {
   width: 100%; background: rgba(255,255,255,0.05);
   border: 1px solid var(--card-border);
@@ -202,7 +188,6 @@ nav {
 .form-textarea { resize: vertical; min-height: 120px; }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
 
-/* ===== SHARED DETAIL ROW (complaint review + track detail) ===== */
 .complaint-detail-card {
   background: var(--card-bg); border: 1px solid var(--card-border);
   border-radius: 16px; padding: 1.5rem; margin-bottom: 2rem;
@@ -216,7 +201,7 @@ nav {
 .detail-key { color: var(--text-muted); }
 .detail-val { color: var(--text); font-weight: 500; }
 
-/* ===== SHARED ACTION BUTTON (admin + track + filing) ===== */
+
 .act-btn {
   padding: 5px 12px; border-radius: 6px;
   border: 1px solid var(--card-border);
@@ -227,7 +212,6 @@ nav {
 .act-btn:hover { border-color: var(--primary); color: var(--primary); }
 .act-btn.resolve:hover { border-color: var(--success); color: var(--success); }
 
-/* ===== TOAST (global, all pages) ===== */
 #toast {
   position: fixed; bottom: 2rem; right: 2rem; z-index: 999;
   background: #1a1a2e; border: 1px solid var(--success);
@@ -239,7 +223,6 @@ nav {
 }
 #toast.show { transform: translateY(0); opacity: 1; }
 
-/* ===== SHARED RESPONSIVE (applies across pages) ===== */
 @media (max-width: 768px) {
   .metrics-grid { grid-template-columns: repeat(2, 1fr); }
   .form-row { grid-template-columns: 1fr; }
