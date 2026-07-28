@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const Complaint = require('../models/Complaint');
 
-// POST - Create new complaint
 router.post('/', async (req, res) => {
   try {
     const complaint = new Complaint(req.body);
@@ -13,7 +12,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-// GET - Get all complaints
+
 router.get('/', async (req, res) => {
   try {
     const complaints = await Complaint.find().sort({ createdAt: -1 });
@@ -23,7 +22,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-// GET - Get complaint by ticket ID
+
 router.get('/:ticketId', async (req, res) => {
   try {
     const complaint = await Complaint.findOne({ ticketId: req.params.ticketId });
@@ -34,7 +33,7 @@ router.get('/:ticketId', async (req, res) => {
   }
 });
 
-// PATCH - Update complaint status
+
 router.patch('/:ticketId', async (req, res) => {
   try {
     const complaint = await Complaint.findOneAndUpdate(

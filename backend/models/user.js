@@ -9,9 +9,14 @@ const userSchema = new mongoose.Schema({
   role: { type: String, enum: ['student', 'admin'], default: 'student' },
 }, { timestamps: true });
 
+<<<<<<< HEAD
 userSchema.pre('save', async function () {
   if (!this.isModified('password')) return;
 
+=======
+userSchema.pre('save', async function(next) {
+  if (!this.isModified('password')) return next();
+>>>>>>> d738eb15ec1f017f13c63a44f62a091702501138
   this.password = await bcrypt.hash(this.password, 10);
 });
 

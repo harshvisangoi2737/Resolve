@@ -1,9 +1,3 @@
-/* =========================================================
-   TRACK.CSS — Track Complaint page (#page-track)
-   Search bar, timeline, complaint detail card (layout extras
-   beyond the shared .complaint-detail-card/.detail-row in base.css).
-   ========================================================= */
-
 #page-track { padding-top: 80px; }
 .track-wrapper { max-width: 900px; margin: 0 auto; padding: 3rem 2rem; }
 .search-bar {
@@ -11,7 +5,7 @@
 }
 .search-bar .form-input { flex: 1; }
 
-/* TIMELINE */
+
 .timeline {
   position: relative; padding-left: 2rem;
 }
