@@ -27,7 +27,7 @@ function handleSignup() {
     return;
   }
 
-  fetch("/api/auth/signup", {
+  fetch("https://resolv-backend-2mka.onrender.com/api/auth/signup", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ name, studentId, email, password, role: isAdmin ? 'admin' : 'student' }),
