@@ -12,17 +12,11 @@
 
   <body>
 
-<script>
-  const token = localStorage.getItem('resolv_token');
-  const role = localStorage.getItem('resolv_role');
-  
-  if (!token || role !== 'admin') {
-    window.location.href = 'login.html';
-  }
-</script>
+
 
 <canvas id="bg-canvas"></canvas>
 
+<!-- NAVBAR -->
 <nav>
   <div class="nav-logo">Re<span>solv</span></div>
   <ul class="nav-links">
@@ -39,7 +33,7 @@
   </div>
 </nav>
 
-
+<!-- ===================== ADMIN PAGE ===================== -->
 <div id="page-admin" class="page active">
   <div class="admin-wrapper">
     <div class="dash-header">
@@ -100,7 +94,7 @@
   </div>
 </div>
 
-
+<!-- Toast -->
 <div id="toast">
   <span id="toast-icon">✅</span>
   <span id="toast-msg">Done!</span>

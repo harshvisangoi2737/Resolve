@@ -1,5 +1,5 @@
 function handleSignup() {
-  const isAdmin = document.getElementById("signup-admin").checked;
+
   const name = document.getElementById("signup-name").value.trim();
   const studentId = document.getElementById("signup-id").value.trim();
   const email = document.getElementById("signup-email").value.trim();
@@ -27,10 +27,10 @@ function handleSignup() {
     return;
   }
 
-  fetch("https://resolv-backend-2mka.onrender.com/api/auth/signup", {
+  fetch("/api/auth/signup", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ name, studentId, email, password, role: isAdmin ? 'admin' : 'student' }),
+   body: JSON.stringify({ name, studentId, email, password }),
   })
     .then((res) => res.json().then((data) => ({ ok: res.ok, data })))
     .then(({ ok, data }) => {

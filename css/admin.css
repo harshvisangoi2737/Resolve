@@ -1,3 +1,9 @@
+/* =========================================================
+   ADMIN.CSS — Admin Panel page (#page-admin)
+   Filter bar, admin table, actions.
+   .act-btn base styling lives in base.css (shared with other pages).
+   ========================================================= */
+
 #page-admin { padding-top: 80px; }
 .admin-wrapper { max-width: 1100px; margin: 0 auto; padding: 2rem; }
 .filter-bar {

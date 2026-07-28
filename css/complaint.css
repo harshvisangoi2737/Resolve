@@ -1,3 +1,9 @@
+/* =========================================================
+   COMPLAINT.CSS — File Complaint page (#page-complaint)
+   Multi-step form, progress steps, category chips,
+   priority selector, upload zone, success screen.
+   ========================================================= */
+
 #page-complaint { padding-top: 80px; }
 .complaint-wrapper { max-width: 800px; margin: 0 auto; padding: 3rem 2rem; }
 .form-title {
@@ -6,7 +12,7 @@
 }
 .form-sub { color: var(--text-muted); margin-bottom: 2.5rem; }
 
-
+/* PROGRESS STEPS */
 .progress-steps {
   display: flex; gap: 0; margin-bottom: 3rem;
   position: relative;
@@ -31,7 +37,7 @@
 .prog-label { font-size: 0.75rem; color: var(--text-muted); }
 .prog-step.active .prog-label { color: var(--primary); font-weight: 600; }
 
-
+/* FORM STEPS */
 .form-step { display: none; }
 .form-step.active { display: block; }
 .form-group { margin-bottom: 1.5rem; }
@@ -40,7 +46,7 @@
   color: var(--text); margin-bottom: 0.5rem;
 }
 
-
+/* CATEGORY CHIPS */
 .category-chips { display: flex; flex-wrap: wrap; gap: 0.7rem; }
 .chip {
   padding: 0.5rem 1.2rem; border-radius: 50px;
@@ -52,7 +58,7 @@
 .chip:hover { border-color: var(--primary); color: var(--primary); }
 .chip.selected { border-color: var(--primary); background: rgba(108,99,255,0.15); color: var(--primary); }
 
-
+/* PRIORITY OPTIONS */
 .priority-options { display: flex; gap: 1rem; }
 .priority-opt {
   flex: 1; border: 1px solid var(--card-border);
@@ -67,7 +73,7 @@
 .prio-icon { font-size: 1.5rem; margin-bottom: 0.4rem; }
 .prio-label { font-size: 0.85rem; font-weight: 600; }
 
-
+/* UPLOAD ZONE */
 .upload-zone {
   border: 2px dashed var(--card-border);
   border-radius: 12px; padding: 2rem;
@@ -78,7 +84,7 @@
 .upload-icon { font-size: 2rem; margin-bottom: 0.5rem; }
 .form-actions { display: flex; justify-content: space-between; margin-top: 2rem; }
 
-
+/* SUCCESS SCREEN */
 .success-screen {
   display: none; text-align: center; padding: 3rem;
 }

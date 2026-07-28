@@ -12,15 +12,10 @@
 
   <body>
 
-<script>
-  const token = localStorage.getItem('resolv_token');
-  if (!token) {
-    window.location.href = 'login.html';
-  }
-</script>
 
 <canvas id="bg-canvas"></canvas>
 
+<!-- NAVBAR -->
 <nav>
   <div class="nav-logo">Re<span>solv</span></div>
   <ul class="nav-links">
@@ -29,7 +24,7 @@
     <li><a onclick="goTo('complaint')">File Complaint</a></li>
     <li><a onclick="goTo('track')">Track</a></li>
     <li><a onclick="goTo('analytics')">Analytics</a></li>
-    <li><a onclick="goTo('admin')">Admin</a></li>
+    <!-- <li><a onclick="goTo('admin')">Admin</a></li> -->
   </ul>
  <div style="display:flex;gap:0.7rem;align-items:center;">
     <button class="btn-outline" style="padding:0.55rem 1.1rem;font-size:0.82rem;" onclick="goTo('login')">Login</button>
@@ -37,7 +32,7 @@
   </div>
 </nav>
 
-
+<!-- ===================== DASHBOARD PAGE ===================== -->
 <div id="page-dashboard" class="page active">
   <div class="dashboard-wrapper">
     <div class="dash-header">
@@ -241,7 +236,7 @@
   </div>
 </div>
 
-
+<!-- Toast -->
 <div id="toast">
   <span id="toast-icon">✅</span>
   <span id="toast-msg">Done!</span>

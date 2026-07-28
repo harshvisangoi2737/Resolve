@@ -1,5 +1,12 @@
+/* =========================================================
+   HOME.CSS — Landing page (#page-home)
+   Hero, floating cards, stats strip, features, how-it-works.
+   Depends on: base.css (variables, .btn-primary/.btn-outline, .section* not here)
+   ========================================================= */
+
 #page-home { padding-top: 80px; }
 
+/* HERO */
 .hero {
   min-height: calc(100vh - 80px);
   display: flex; align-items: center; justify-content: center;
@@ -42,7 +49,7 @@
   animation: fadeInUp 0.6s ease 0.3s forwards; opacity: 0;
 }
 
-
+/* FLOATING CARDS */
 .hero-cards {
   position: absolute; width: 100%; height: 100%;
   top: 0; left: 0; pointer-events: none; overflow: hidden;
@@ -74,7 +81,7 @@
 .s-pending { background: rgba(255,217,61,0.15); color: var(--warning); }
 .s-urgent { background: rgba(255,107,107,0.15); color: var(--danger); }
 
-
+/* STATS STRIP */
 .stats-strip {
   padding: 3rem 2rem;
   border-top: 1px solid var(--card-border);
@@ -93,7 +100,7 @@
 .stat-num span { color: var(--primary); }
 .stat-label { color: var(--text-muted); font-size: 0.85rem; margin-top: 6px; }
 
-
+/* SECTION WRAPPER (used by features / how-it-works / cta blocks on home page) */
 .section { padding: 6rem 2rem; }
 .section-header { text-align: center; max-width: 600px; margin: 0 auto 4rem; }
 .section-eyebrow {
@@ -108,7 +115,7 @@
 }
 .section-sub { color: var(--text-muted); font-size: 1rem; line-height: 1.7; }
 
-
+/* FEATURES GRID */
 .features-grid {
   max-width: 1100px; margin: 0 auto;
   display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
@@ -133,7 +140,7 @@
 .feature-title { font-size: 1.05rem; font-weight: 600; margin-bottom: 0.6rem; color: #fff; }
 .feature-desc { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; }
 
-
+/* HOW IT WORKS — STEPS */
 .steps {
   max-width: 900px; margin: 0 auto;
   display: flex; flex-direction: column; gap: 0;
@@ -161,7 +168,7 @@
 .step-title { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem; color: #fff; }
 .step-desc { color: var(--text-muted); line-height: 1.7; }
 
-
+/* SCROLL REVEAL ANIMATIONS */
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(30px); }
   to { opacity: 1; transform: translateY(0); }
@@ -169,7 +176,7 @@
 .reveal { opacity: 0; transform: translateY(30px); transition: all 0.6s ease; }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 
-
+/* RESPONSIVE (home page specific) */
 @media (max-width: 768px) {
   .features-grid { grid-template-columns: 1fr; }
   .stats-inner { grid-template-columns: repeat(2, 1fr); }

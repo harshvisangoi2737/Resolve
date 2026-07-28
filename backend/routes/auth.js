@@ -4,17 +4,12 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const User = require('../models/User');
 
-<<<<<<< HEAD
 function signToken(user) {
   return jwt.sign({ id: user._id, role: user.role }, process.env.JWT_SECRET, { expiresIn: '7d' });
 }
 
 // Shared handler for both /register and /signup (same logic, two URLs)
 async function handleRegister(req, res) {
-=======
-
-router.post('/register', async (req, res) => {
->>>>>>> d738eb15ec1f017f13c63a44f62a091702501138
   try {
     // IMPORTANT: role is NOT read from req.body. Every signup is forced to
     // "student" here, on the server, so nobody can make themselves an admin
@@ -44,7 +39,7 @@ router.post('/register', handleRegister);
 // POST - Signup (this is the URL signup.js actually calls)
 router.post('/signup', handleRegister);
 
-
+// POST - Login
 router.post('/login', async (req, res) => {
   try {
     const { email, password } = req.body;
