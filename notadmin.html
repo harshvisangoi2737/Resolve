@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Not an Admin — Resolv</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+
+<canvas id="bg-canvas"></canvas>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-logo">Re<span>solv</span></div>
+  <ul class="nav-links">
+    <li><a onclick="goTo('index')">Home</a></li>
+    <li><a onclick="goTo('dashboard')">Dashboard</a></li>
+    <li><a onclick="goTo('complaint')">File Complaint</a></li>
+    <li><a onclick="goTo('track')">Track</a></li>
+    <li><a onclick="goTo('analytics')">Analytics</a></li>
+    <li><a onclick="goTo('admin')">Admin</a></li>
+  </ul>
+  <div style="display:flex;gap:0.7rem;align-items:center;">
+    <button class="btn-outline" style="padding:0.55rem 1.1rem;font-size:0.82rem;" onclick="goTo('login')">Login</button>
+    <button class="nav-cta" onclick="goTo('signup')">Sign Up</button>
+  </div>
+</nav>
+
+<!-- ===================== NOT ADMIN PAGE ===================== -->
+<div id="page-not-admin" class="page active">
+  <div class="login-wrapper">
+    <div style="text-align:center;max-width:420px;">
+      <h1 style="font-family:'Space Grotesk',sans-serif;font-size:2rem;font-weight:700;color:var(--danger,#ff6b6b);margin-bottom:0.8rem;">
+        You Are Not an Admin
+      </h1>
+      <p style="color:var(--text-muted,#8890a6);font-size:0.9rem;margin-bottom:1.8rem;">
+        Sorry, you don't have permission to access this page. If you believe this is a mistake, contact your hostel administration.
+      </p>
+      <button class="btn-primary" style="border-radius:99px;padding:0.7rem 1.8rem;" onclick="goTo('login')">
+        Back
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div id="toast">
+  <span id="toast-icon">✅</span>
+  <span id="toast-msg">Done!</span>
+</div>
+
+<script src="js/shared.js"></script>
+</body>
+</html>

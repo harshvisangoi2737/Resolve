@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const path = require('path');
 require('dotenv').config();
 
 const app = express();
@@ -18,10 +19,8 @@ mongoose.connect(process.env.MONGO_URI)
 app.use('/api/complaints', require('./routes/complaints'));
 app.use('/api/auth', require('./routes/auth'));
 
-// Test route
-app.get('/', (req, res) => {
-  res.json({ message: 'Resolv backend is running!' });
-});
+// Serve the frontend files (index.html, login.html, css/, js/, etc.)
+app.use(express.static(path.join(__dirname, '..')));
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login — Resolv</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+
+<canvas id="bg-canvas"></canvas>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-logo">Re<span>solv</span></div>
+  <ul class="nav-links">
+    <li><a onclick="goTo('index')">Home</a></li>
+
+  </ul>
+ 
+</nav>
+
+<!-- ===================== LOGIN PAGE ===================== -->
+<div id="page-login" class="page active">
+  <div class="login-wrapper">
+    <div class="login-card">
+      <div class="login-title">Re<span>solv</span></div>
+      <p class="login-sub">Sign in to file complaints, track issues and get updates.</p>
+
+      <div class="form-group">
+        <label class="form-label">Student ID / Email</label>
+        <input type="text" class="form-input" placeholder="e.g. 2023CS042 or you@college.edu" id="login-id">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Password</label>
+        <input type="password" class="form-input" placeholder="Enter your password" id="login-password">
+      </div>
+
+      <div id="login-error" class="login-error" style="display:none;"></div>
+
+      <button class="btn-primary login-btn" onclick="handleLogin()">Log In →</button>
+
+      <div class="login-divider"><span>or</span></div>
+
+      <button class="btn-outline login-btn" onclick="handleAdminLogin()">Admin Login</button>
+
+      <p class="login-footer-text">
+        New here? <a onclick="goTo('signup')">Create an account</a>
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div id="toast">
+  <span id="toast-icon">✅</span>
+  <span id="toast-msg">Done!</span>
+</div>
+
+<script src="js/shared.js"></script>
+<script src="js/login.js"></script>
+</body>
+</html>

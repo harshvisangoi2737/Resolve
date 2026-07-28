@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Complaint = require('../models/complaint');
+const Complaint = require('../models/Complaint');
 
 // POST - Create new complaint
 router.post('/', async (req, res) => {

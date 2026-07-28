@@ -5,7 +5,7 @@ function loadTrack() {
     return;
   }
 
-  fetch('https://resolv-backend-2mka.onrender.com/api/complaints/' + ticketId)
+  fetch('http://localhost:5000/api/complaints/' + ticketId)
     .then(res => res.json())
     .then(result => {
       if (result.success) {
